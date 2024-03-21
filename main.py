@@ -1,3 +1,15 @@
+########################################################################
+# Title : RPG - MAP
+# Class : Computer Science 30
+# Assighnment : Movement in the map
+# Coder : Ramija Iffat
+# Version : 1
+########################################################################
+""" In this game the player will just move around and explore any room 
+    as he/she wants.
+"""
+########################################################################
+# Functions-------------------------------------------------------------
 house ={ "starting_room":{
                           "description" : "You start your adventure from here",
                           "items around the room" : ["dusty vase",
@@ -71,21 +83,25 @@ map = [
         ["starting_room", "spooky_hallway", "spooky_hallway", "bedroom"],
         ["living_room", "dinning_room", "secret_room", "storage"]
        ]
+
 map_width = len(map[0])
 map_height = len(map)
-
+# Imports and Global Variables------------------------------------------
 action = ["move", "explore"]
 
 directions = ["north", "south", "west", "east"]
 
 x = 1
 y = 0
+
 player_position = {
     "row":x, 
     "column":y
 }
 main = True
 
+
+# Functions-------------------------------------------------------------
 def main1():
     print("Welcome to the treasure hunt. You are in starting room. "
                     + "Good luck in your treasure hunt!")
@@ -99,6 +115,7 @@ def main1():
             print("Have fun exploring around!")
         elif action_choice.lower() == "move":
             movement()
+
 
 def movement():
     global main
@@ -146,5 +163,5 @@ def movement():
         print(f"Items in the room {item}")
     #movement()
 
-
+#Main-------------------------------------------------------------------
 main1()    
