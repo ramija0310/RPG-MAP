@@ -11,7 +11,7 @@
 ########################################################################
 # Functions-------------------------------------------------------------
 house ={ "starting_room":{
-                          "description" : "You start your adventure from here",
+                          "description" : "You are in the starting room.",
                           "items around the room" : ["dusty vase",
                                                     "broken mirror"],
                           "action" : "may start your game"
@@ -78,15 +78,14 @@ house ={ "starting_room":{
                        }
 
         }
-map = [
+map1 = [
         ["living_room", "study_room", "bedroom", "washroom"],
         ["starting_room", "spooky_hallway", "spooky_hallway", "bedroom"],
         ["living_room", "dinning_room", "secret_room", "storage"]
        ]
 
-map_width = len(map[0])
-map_height = len(map)
-# Imports and Global Variables------------------------------------------
+# Imports and Global Variables----------------------------------------
+import map
 action = ["move", "explore"]
 
 directions = ["north", "south", "west", "east"]
@@ -103,13 +102,12 @@ main = True
 
 # Functions-------------------------------------------------------------
 def main1():
-    print("Welcome to the treasure hunt. You are in starting room. "
-                    + "Good luck in your treasure hunt!")
+    print("Welcome to the treasure hunt. You are in starting room. Good luck in your treasure hunt!")
     print("What do you want to do\n")
     global main, action
-    for actions in action:
-        print(f" - {actions}")
     while main:
+        for actions in action:
+            print(f" - {actions}")
         action_choice = input("\n Choose option: ")
         if action_choice.lower() == "explore":
             print("Have fun exploring around!")
@@ -126,28 +124,28 @@ def movement():
     while move1:
         ask_direction = input("\n Choose Direction: \n")
         if ask_direction.lower() == "north":
-            if player_position["column"] == 0:
+            if player_position["row"] == 0:
                 print("No more North!")
             else:
-                player_position["column"] -= 1
+                player_position["row"] -= 1
                 move1 = False
         elif ask_direction.lower() == "south":
-            if player_position["column"] == 2:
+            if player_position["row"] == 2:
                 print("No more South!")
-            else:
-                player_position["column"] += 1
-                move1 = False
-        elif ask_direction.lower() == "east":
-            if player_position["row"] == 3:
-                print("No more East!")
             else:
                 player_position["row"] += 1
                 move1 = False
+        elif ask_direction.lower() == "east":
+            if player_position["column"] == 3:
+                print("No more East!")
+            else:
+                player_position["column"] += 1
+                move1 = False
         elif ask_direction.lower() == "west":
-            if player_position["row"] == 0:
+            if player_position["column"] == 0:
                 print("No more West!")
             else:
-                player_position["row"] -= 1
+                player_position["column"] -= 1
                 move1 = False
         elif ask_direction.lower() == "quit":
             print("You are leaving.")
@@ -157,11 +155,12 @@ def movement():
         else:
             print("Please Choose from the option")
     if main:
-        room = house[map[player_position["row"]][player_position["column"]]]["description"]
+        room = house[map1[player_position["row"]][player_position["column"]]]["description"]
         print(room)
-        item = house[map[player_position["row"]][player_position["column"]]]["items around the room"]
-        print(f"Items in the room {item}")
+        item = house[map1[player_position["row"]][player_position["column"]]]["items around the room"]
+        print(f"Items in the room {item}\n")
     #movement()
 
 #Main-------------------------------------------------------------------
 main1()    
+map.export_map()
