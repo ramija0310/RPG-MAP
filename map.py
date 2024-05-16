@@ -1,6 +1,7 @@
 # Imports and Global Variables------------------------------------------
 from tabulate import tabulate
-
+max_row = 2
+max_column = 3
 #game's map made with an array
 tile = [
         ["living room", "study room", "bedroom", "washroom"],

@@ -86,6 +86,7 @@ map1 = [
 
 # Imports and Global Variables----------------------------------------
 import map
+#import inventory
 action = ["move", "explore"]
 
 directions = ["north", "south", "west", "east"]
@@ -164,3 +165,4 @@ def movement():
 #Main-------------------------------------------------------------------
 main1()    
 map.export_map()
+#inventory.export_inventory()
