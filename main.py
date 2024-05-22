@@ -5,8 +5,8 @@
 # Coder : Ramija Iffat
 # Version : 1
 ########################################################################
-""" In this game the player will just move around and explore any room 
-    as he/she wants.
+""" In this game you can move around and explore any room 
+    as wish to do
 """
 ########################################################################
 # Functions-------------------------------------------------------------
@@ -86,7 +86,7 @@ map1 = [
 
 # Imports and Global Variables----------------------------------------
 import map
-#import inventory
+
 action = ["move", "explore"]
 
 directions = ["north", "south", "west", "east"]
@@ -109,9 +109,9 @@ def main1():
     while main:
         for actions in action:
             print(f" - {actions}")
-        action_choice = input("\n Choose option: ")
+        action_choice = input("\n Choose option: ") 
         if action_choice.lower() == "explore":
-            print("Have fun exploring around!")
+            explore()
         elif action_choice.lower() == "move":
             movement()
 
@@ -160,9 +160,9 @@ def movement():
         print(room)
         item = house[map1[player_position["row"]][player_position["column"]]]["items around the room"]
         print(f"Items in the room {item}\n")
-    #movement()
+        
+def explore():
 
 #Main-------------------------------------------------------------------
 main1()    
 map.export_map()
-#inventory.export_inventory()
